@@ -8,6 +8,9 @@ import {
 import FILTERSCHANGEMC from '@salesforce/messageChannel/FiltersChange__c';
 import PROPERTYSELECTEDMC from '@salesforce/messageChannel/PropertySelected__c';
 import getPagedPropertyList from '@salesforce/apex/PropertyController.getPagedPropertyList';
+import LOCALE from '@salesforce/i18n/locale';
+import RESULT_COUNT_ONE from '@salesforce/label/c.PropertyTileList_ResultCount_One';
+import RESULT_COUNT_OTHER from '@salesforce/label/c.PropertyTileList_ResultCount_Other';
 
 const PAGE_SIZE = 9;
 
@@ -22,6 +25,17 @@ export default class PropertyTileList extends LightningElement {
 
     @wire(MessageContext)
     messageContext;
+
+    // One label per plural form, picked with the user's plural rules, so every
+    // language can phrase "N properties found" its own way.
+    get resultCountText() {
+        const count = this.properties.data.totalItemCount;
+        const label =
+            new Intl.PluralRules(LOCALE).select(count) === 'one'
+                ? RESULT_COUNT_ONE
+                : RESULT_COUNT_OTHER;
+        return label.replace('{0}', new Intl.NumberFormat(LOCALE).format(count));
+    }
 
     @wire(getPagedPropertyList, {
         searchKey: '$searchKey',

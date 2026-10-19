@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>PropertyTileList_ResultCount_One</fullName>
+        <categories>component:propertyTileList, ui:text</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Above the property tiles when 1 property matches. {0} = the count</shortDescription>
+        <value>{0} property found</value>
+    </labels>
+    <labels>
+        <fullName>PropertyTileList_ResultCount_Other</fullName>
+        <categories>component:propertyTileList, ui:text</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Above the property tiles for any other count. {0} = the count</shortDescription>
+        <value>{0} properties found</value>
+    </labels>
+</CustomLabels>
