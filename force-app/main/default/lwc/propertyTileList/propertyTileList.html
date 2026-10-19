@@ -1,9 +1,7 @@
 <template>
     <div class="slds-card slds-var-p-around_small">
         <template lwc:if={properties.data}>
-            <p class="slds-var-m-bottom_small">
-                {properties.data.totalItemCount} properties found
-            </p>
+            <p class="slds-var-m-bottom_small">{resultCountText}</p>
             <div class="slds-grid slds-wrap">
                 <template
                     for:each={properties.data.records}
