@@ -1,0 +1,18 @@
+# i18n readiness gate: flags hardcoded, fragmented and locale-bound UI text in LWC source.
+# Findings already in .i18n-baseline.json are reported but don't fail the check; only new ones do.
+name: i18n readiness
+
+on:
+    push:
+        branches: [main]
+    pull_request:
+    workflow_dispatch:
+
+jobs:
+    i18n:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - uses: PurpleRatzzz/lwc-i18n-readiness@v0.1.0
+              with:
+                  baseline: .i18n-baseline.json
